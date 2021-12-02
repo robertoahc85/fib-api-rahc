@@ -10,7 +10,7 @@ class FibsController < ApplicationController
 
   # GET /fibs/1
   def show
-    render json: @fib
+    render json: fibonacci(@fib['number'])
   end
 
   # POST /fibs
@@ -48,4 +48,13 @@ class FibsController < ApplicationController
     def fib_params
       params.require(:fib).permit(:number)
     end
+    def fibonacci(n)
+      if n==1
+          1
+       elsif n==2
+          1
+       else
+          fibonacci(n-1) + fibonacci(n-2)
+       end
+  end 
 end
